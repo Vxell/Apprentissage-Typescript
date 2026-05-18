@@ -107,7 +107,7 @@ interface Paiement{
 
 const p: Paiement={id:"1",montant:100,statut:"en_attente"};
     
-function messagePaiement (paiement:Paiement) : string{
+function messagePaiement (p:Paiement) : string{
     if(p.statut === 'en_attente') return "En attente de validation";
     if(p.statut === 'valide') return "Paiement de Xxeuro validé";
     if(p.statut === 'echoue') return "Paiement echoué";
@@ -163,6 +163,9 @@ function traiterRecherche(r: ResultatRecherche): void {
   }
 }
 
+traiterRecherche(chercherCompte("Axel"))
+traiterRecherche(chercherCompte("Inconnu"))
+
 //MISSION 3
 
 type Forme =
@@ -171,7 +174,7 @@ type Forme =
   | { type: "triangle"; base: number; hauteur: number };
 
 function aire(f: Forme): number{
-    if (f.type === "cercle") return 3.14 * f.rayon^2;
+    if (f.type === "cercle") return Math.PI * f.rayon**2;
     if (f.type === "rectangle") return f.hauteur * f.largeur
     return (f.base*f.hauteur)/2
 }
